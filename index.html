@@ -1,1 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Server Status</title>
 
+<style>
+    :root {
+        /* 👉 ဒီနေရာမှာ အရောင်ပြောင်း */
+        --main-color: #00ccff;   /* 🔵 Blue */
+        /* --main-color: #ff0033; */ /* 🔴 Red */
+        /* --main-color: #a855f7; */ /* 🟣 Purple */
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #000;
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--main-color);
+    }
+
+    .container {
+        width: 90%;
+        max-width: 400px;
+        padding: 25px;
+        border-radius: 18px;
+        border: 3px solid var(--main-color);
+        box-shadow: 0 0 25px var(--main-color);
+        text-align: center;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 26px;
+        text-shadow: 0 0 12px var(--main-color);
+    }
+
+    .status {
+        color: #aaa;
+        margin-top: 8px;
+        font-size: 14px;
+    }
+
+    .divider {
+        height: 1px;
+        background: var(--main-color);
+        margin: 20px 0;
+        opacity: 0.4;
+    }
+
+    .box {
+        border: 2px dashed var(--main-color);
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .box h2 {
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 18px;
+        color: #fff;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 14px;
+        border-radius: 12px;
+        background: var(--main-color);
+        color: #000;
+        font-weight: bold;
+        border: none;
+        font-size: 15px;
+        cursor: pointer;
+        box-shadow: 0 0 15px var(--main-color);
+    }
+
+    .btn:hover {
+        opacity: 0.85;
+    }
+
+    .music {
+        margin-top: 15px;
+        background: #111;
+        border-radius: 12px;
+        padding: 10px;
+    }
+
+    audio {
+        width: 100%;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>SERVER IS RUNNING</h1>
+    <div class="status">| Status: Active</div>
+
+    <div class="divider"></div>
+
+    <div class="box">
+        <h2>VLESS CONFIG</h2>
+        <button class="btn" onclick="copyText('vless://example')">
+            COPY VLESS LINK
+        </button>
+    </div>
+
+    <div class="box">
+        <h2>SSH CONFIG</h2>
+        <button class="btn" onclick="copyText('ssh://example')">
+            COPY SSH LINK
+        </button>
+    </div>
+
+    <div class="box">
+        <h2>UDP CONFIG</h2>
+        <button class="btn" onclick="copyText('udp://example')">
+            COPY UDP LINK
+        </button>
+    </div>
+
+    <div class="music">
+        🎵 Background Music
+        <audio controls>
+            <source src="music.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+</div>
+
+<script>
+function copyText(text) {
+    navigator.clipboard.writeText(text);
+    alert("Copied!");
+}
+</script>
+
+</body>
+</html>

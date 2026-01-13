@@ -36,7 +36,6 @@
         text-align: center;
     }
 
-    /* 🔰 LOGO WRAPPER */
     .logo-wrapper {
         width: 120px;
         height: 120px;
@@ -46,9 +45,7 @@
         background: linear-gradient(270deg, #00ccff, #00ffcc, #0099ff);
         background-size: 600% 600%;
         animation: neonRotate 4s linear infinite;
-        box-shadow:
-            0 0 15px var(--main-color),
-            0 0 30px var(--main-color);
+        box-shadow: 0 0 15px var(--main-color), 0 0 30px var(--main-color);
     }
 
     .logo-wrapper img {
@@ -127,15 +124,9 @@
         margin-top: 5px;
     }
 
-    /* 📱 SMALL DEVICES */
     @media (max-width: 360px) {
-        h1 {
-            font-size: 20px;
-        }
-        .logo-wrapper {
-            width: 100px;
-            height: 100px;
-        }
+        h1 { font-size: 20px; }
+        .logo-wrapper { width: 100px; height: 100px; }
     }
 </style>
 </head>
@@ -144,7 +135,6 @@
 
 <div class="container">
 
-    <!-- 🔰 IMAGE LOGO -->
     <div class="logo-wrapper">
         <img src="https://raw.githubusercontent.com/yawlawt/YTPlusVip/main/images/icon.png" alt="Lawt Aung Logo">
     </div>
@@ -154,9 +144,34 @@
 
     <div class="divider"></div>
 
+    <!-- 🔹 VLESS CONFIG 1 -->
     <div class="box">
-        <h2>VLESS CONFIG</h2>
-        <button class="btn" onclick="copyText('vless://example')">
+        <h2>VLESS CONFIG 1</h2>
+        <button class="btn" onclick="copyText('vless://example1')">
+            COPY VLESS LINK
+        </button>
+    </div>
+
+    <!-- 🔹 VLESS CONFIG 2 -->
+    <div class="box">
+        <h2>VLESS CONFIG 2</h2>
+        <button class="btn" onclick="copyText('vless://example2')">
+            COPY VLESS LINK
+        </button>
+    </div>
+
+    <!-- 🔹 VLESS CONFIG 3 -->
+    <div class="box">
+        <h2>VLESS CONFIG 3</h2>
+        <button class="btn" onclick="copyText('vless://example3')">
+            COPY VLESS LINK
+        </button>
+    </div>
+
+    <!-- 🔹 VLESS CONFIG 4 -->
+    <div class="box">
+        <h2>VLESS CONFIG 4</h2>
+        <button class="btn" onclick="copyText('vless://example4')">
             COPY VLESS LINK
         </button>
     </div>

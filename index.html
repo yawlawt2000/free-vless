@@ -3,162 +3,168 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Server Status</title>
+<title>Premium Server Status</title>
 
 <style>
-    :root {
-        --main-color: #00ccff;
-        --bg-color: #000;
-        --text-color: #00ccff;
-        --box-bg: transparent;
-        --music-bg: #111;
-    }
+:root{
+    --primary:#00e5ff;
+    --secondary:#00ffcc;
+    --bg:#05080d;
+    --card-bg:rgba(255,255,255,0.08);
+    --text:#e6faff;
+    --glass:blur(18px);
+}
 
-    body.light {
-        --bg-color: #f5f7fa;
-        --text-color: #0077aa;
-        --box-bg: #ffffff;
-        --music-bg: #e9eef2;
-    }
+body.light{
+    --bg:#f2f6fb;
+    --card-bg:rgba(255,255,255,0.75);
+    --text:#003344;
+}
 
-    * {
-        box-sizing: border-box;
-    }
+*{box-sizing:border-box}
 
-    body {
-        margin: 0;
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: var(--bg-color);
-        font-family: Arial, Helvetica, sans-serif;
-        color: var(--text-color);
-        padding: 15px;
-        transition: 0.3s;
-    }
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:
+        radial-gradient(circle at top,rgba(0,229,255,.15),transparent 40%),
+        var(--bg);
+    font-family:Segoe UI,Arial,sans-serif;
+    color:var(--text);
+    transition:.3s;
+    padding:16px;
+}
 
-    .container {
-        width: 100%;
-        max-width: 380px;
-        padding: 25px 20px;
-        border-radius: 18px;
-        border: 2px solid var(--main-color);
-        box-shadow: 0 0 25px var(--main-color);
-        text-align: center;
-        background: var(--box-bg);
-    }
+.container{
+    width:100%;
+    max-width:420px;
+    background:var(--card-bg);
+    backdrop-filter:var(--glass);
+    border-radius:22px;
+    padding:26px 22px;
+    box-shadow:
+        0 0 40px rgba(0,229,255,.35),
+        inset 0 0 0 1px rgba(255,255,255,.15);
+}
 
-    .toggle {
-        text-align: right;
-        margin-bottom: 10px;
-    }
+.top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+}
 
-    .toggle button {
-        padding: 6px 12px;
-        border-radius: 20px;
-        border: none;
-        cursor: pointer;
-        background: var(--main-color);
-        color: #000;
-        font-weight: bold;
-        font-size: 12px;
-        box-shadow: 0 0 10px var(--main-color);
-    }
+.toggle button{
+    border:none;
+    padding:7px 14px;
+    border-radius:20px;
+    cursor:pointer;
+    font-weight:600;
+    background:linear-gradient(135deg,var(--primary),var(--secondary));
+    color:#000;
+    box-shadow:0 0 15px var(--primary);
+}
 
-    .logo-wrapper {
-        width: 120px;
-        height: 120px;
-        margin: 0 auto 15px;
-        border-radius: 50%;
-        padding: 5px;
-        background: linear-gradient(270deg, #00ccff, #00ffcc, #0099ff);
-        background-size: 600% 600%;
-        animation: neonRotate 4s linear infinite;
-        box-shadow: 0 0 15px var(--main-color), 0 0 30px var(--main-color);
-    }
+.logo{
+    width:110px;
+    height:110px;
+    margin:14px auto;
+    border-radius:50%;
+    padding:5px;
+    background:conic-gradient(
+        from 0deg,
+        var(--primary),
+        var(--secondary),
+        #0077ff,
+        var(--primary)
+    );
+    animation:spin 6s linear infinite;
+    box-shadow:0 0 30px var(--primary);
+}
 
-    .logo-wrapper img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 50%;
-        background: #000;
-    }
+.logo img{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    object-fit:cover;
+    background:#000;
+}
 
-    @keyframes neonRotate {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
+@keyframes spin{
+    100%{transform:rotate(360deg)}
+}
 
-    h1 {
-        margin: 5px 0 0;
-        font-size: 22px;
-        text-shadow: 0 0 10px var(--main-color);
-    }
+h1{
+    text-align:center;
+    margin:6px 0 2px;
+    font-size:22px;
+    letter-spacing:.5px;
+}
 
-    .status {
-        color: #888;
-        margin-top: 6px;
-        font-size: 13px;
-    }
+.status{
+    text-align:center;
+    font-size:13px;
+    opacity:.7;
+}
 
-    .divider {
-        height: 1px;
-        background: var(--main-color);
-        margin: 18px 0;
-        opacity: 0.4;
-    }
+.divider{
+    height:1px;
+    background:linear-gradient(90deg,transparent,var(--primary),transparent);
+    margin:22px 0;
+}
 
-    .box {
-        border: 2px dashed var(--main-color);
-        border-radius: 14px;
-        padding: 18px;
-        margin-bottom: 18px;
-        background: var(--box-bg);
-    }
+.box{
+    background:rgba(0,0,0,.25);
+    border-radius:16px;
+    padding:16px;
+    margin-bottom:16px;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);
+}
 
-    .box h2 {
-        margin: 0 0 12px;
-        font-size: 17px;
-        color: inherit;
-    }
+body.light .box{
+    background:rgba(255,255,255,.6);
+}
 
-    .btn {
-        width: 100%;
-        padding: 13px;
-        border-radius: 12px;
-        background: var(--main-color);
-        color: #000;
-        font-weight: bold;
-        border: none;
-        font-size: 14px;
-        cursor: pointer;
-        box-shadow: 0 0 15px var(--main-color);
-    }
+.box h2{
+    margin:0 0 12px;
+    font-size:15px;
+}
 
-    .btn:active {
-        transform: scale(0.97);
-    }
+.btn{
+    width:100%;
+    padding:13px;
+    border:none;
+    border-radius:14px;
+    cursor:pointer;
+    font-weight:700;
+    background:linear-gradient(135deg,var(--primary),var(--secondary));
+    color:#000;
+    box-shadow:0 0 20px rgba(0,229,255,.6);
+}
 
-    .music {
-        margin-top: 10px;
-        background: var(--music-bg);
-        border-radius: 12px;
-        padding: 10px;
-        font-size: 14px;
-    }
+.btn:active{
+    transform:scale(.97);
+}
 
-    audio {
-        width: 100%;
-        margin-top: 5px;
-    }
+.music{
+    margin-top:18px;
+    background:rgba(0,0,0,.3);
+    border-radius:14px;
+    padding:12px;
+    font-size:14px;
+}
 
-    @media (max-width: 360px) {
-        h1 { font-size: 20px; }
-        .logo-wrapper { width: 100px; height: 100px; }
-    }
+body.light .music{
+    background:rgba(255,255,255,.7);
+}
+
+audio{
+    width:100%;
+    margin-top:6px;
+}
 </style>
 </head>
 
@@ -166,97 +172,77 @@
 
 <div class="container">
 
-    <div class="toggle">
-        <button onclick="toggleMode()">🌙 / ☀️</button>
+    <div class="top">
+        <div></div>
+        <div class="toggle">
+            <button onclick="toggleMode()">🌙 / ☀️</button>
+        </div>
     </div>
 
-    <div class="logo-wrapper">
-        <img src="https://raw.githubusercontent.com/yawlawt/YTPlusVip/main/images/icon.png" alt="Lawt Aung Logo">
+    <div class="logo">
+        <img src="https://raw.githubusercontent.com/yawlawt/YTPlusVip/main/images/icon.png">
     </div>
 
-    <h1>SERVER IS ONLINE</h1>
-    <div class="status"> Active</div>
+    <h1>SERVER ONLINE</h1>
+    <div class="status">Premium Network Active</div>
 
     <div class="divider"></div>
 
-    <!-- ðŸ”¹ VLESS CONFIG 1 -->
     <div class="box">
-        <h2>Ais 64Kbps </h2>
-        <button class="btn" onclick="copyText('vless://0befad3d-deb0-4df0-894e-8e69f8a72243@yt.lawtaung.de5.net:80?path=%2Fyt&security=none&encryption=none&host=www.speedtest.net&type=ws#Ais%2064Kbps')">
-            COPY VLESS KeY
-        </button>
+        <h2>Ais 64Kbps (V2ray)</h2>
+        <button class="btn" onclick="copyText('vless://0befad3d-deb0-4df0-894e-8e69f8a72243@yt.lawtaung.de5.net:80?path=%2Fyt&security=&encryption=none&host=www.speedtest.net&type=ws#Ais%2064Kbps')">COPY KEY</button>
     </div>
 
-    <!-- ðŸ”¹ VLESS CONFIG 2 -->
     <div class="box">
-        <h2>True Vdo  </h2>
-        <button class="btn" onclick="copyText('vless://0eadb1f1-8adb-456e-b37d-4a687eec131f@support.zoom.us:443?path=%2F%3Fed%3D2560&security=tls&encryption=none&insecure=1&host=www.speedtest.net-yaw.lawtaung.de5.net&fp=random&type=ws&allowInsecure=1&sni=www.speedtest.net-yaw.lawtaung.de5.net#True%20Vdo')">
-            COPY VLESS KeY
-        </button>
+        <h2>True Vdo (V2ray)</h2>
+        <button class="btn" onclick="copyText('vless://c40b21ed-3453-4dfe-8704-73f247582cfb@support.zoom.us:80?path=%2Fyt&security=none&encryption=none&host=yt.lawtaung.de5.net&type=ws#True%20Vdo')">COPY KEY</button>
     </div>
 
-    <!-- ðŸ”¹ VLESS CONFIG 3 -->
     <div class="box">
-        <h2>Starlink Old Bypass </h2>
-        <button class="btn" onclick="copyText('vless://32461690-ec04-49e3-c9e6-7665eabfd488@117.18.127.246:80?path=%2Fyt&security=none&encryption=none&host=portal-as.ruijienetworks.com&type=ws#StarLink%20Old%20Bypass')">
-            COPY VLESS KeY
-        </button>
+        <h2>Starlink Old Bypass</h2>
+        <button class="btn" onclick="copyText('vless://32461690-ec04-49e3-c9e6-7665eabfd488@117.18.127.246:80?path=%2Fyt&security=&encryption=none&host=portal-as.ruijienetworks.com&type=ws#StarLink%20Old%20Bypass')">COPY KEY</button>
     </div>
 
-    <!-- ðŸ”¹ VLESS CONFIG 4 -->
     <div class="box">
-        <h2>Dtac No-pro Mytel 4g 3:33am end </h2>
-        <button class="btn" onclick="copyText('vless://ba0e3984-ccc9-48a3-8074-b2f507f41ce8@vpn.googleapis.com:443?path=%2F%40nkka404&security=tls&encryption=none&insecure=0&host=dtac-246410012842.us-central1.run.app&type=ws&allowInsecure=0&sni=dtac-246410012842.us-central1.run.app#Mytel-bypass-Dtac-No-pro%203%3A33am%20end')">
-            COPY VLESS KeY
-        </button>
+        <h2>Dtac No-Pro</h2>
+        <button class="btn" onclick="copyText('VLESS_KEY_4')">COPY KEY</button>
+    </div>
+
+    <div class="box">
+        <h2>Dtac Jaidee (Zivpn)</h2>
+        <button class="btn" onclick="copyText('zivpn://r0no+QJeY9jHAV6lt/shRATSSsWsWqA3Ia9iJ93kTiMG3C/d0lNlna13wuC8+NvvArrWtRP8GXPQghivgKcONHwjMPuGN75aiACIdoC7Rxc2D1oFFFceGNaG6qq/pF56fCEoOy09+Z1oYstXzgb7OaCR1SuprbpTyi13FYET0c/cRqUGHftwf42U0vor7Svqv1s8MEZp4Hgq9eGfZpY6QV721EAE73hfXKb/pFO1GAt4zGDdBqJG4TtqeSGuveA5d9fmxFCXCm2BX+W5MzQYXFOUfnW5wOpvc1wQF0bCWWKAquoE9EMbYPeuoHwwrKQ2nfeV1iXaHXrVbTUsiHmipdDi5YxrUVeggIs4yNQwj9koW0ke+4tj/+myMO4wDOMRQ2j/e/cexY9EAVQ81kZvyAOfXnNrNru+G7wHtG+pJFev7Nrm8RQjc2m1MZw8s6GRCQOnH4fANOo/crrtjpy++EC1V/Lu98J8UlvrHCsRkz7qPNrpx6dWMEiR2hei7wSOTgpRqwiZSH0bA3N0nYag+orsuf8rPBXRhyCwQzK8Bu4TXjhnFvJ5J+vtRGSk2OzHEJkTvGutS41+/289GApGevleXiUpq+rwNXRe4GRh6gkICm/7wyLq++yS1hO5oYk3A3+HQV7KzVNvCVE9KQK5FmKyqh+JzKaX2+alsghglVcNABVAFyj3CmoYPoTPI23Uxri90HH6Ax1ty7L1yvIvnD/dYr48+tWSLEQk3FcQ3f1Z8KlnM/QWr/HJy31cTNRjMNYRY9F8N/u/ZIlDTJTu/l2f7k1GMRPxVL/IjrOxhp5Jz+dH75ls2fteACauCCqc0uJhSKxnTwRWkJDStLtYkrFhWcD70wL7n3BNExPZzqlKN97hsOPjrKdPTwUza+8KI63B9WOMxF0D3fSvLXvI961gqT8SJBF9UWCpwQne7tSPCmuD+M1SO9nUpVgXLYKlwbX61/l0NLVVNueyOpk8YL/YZBRgn9gzxW2jaX0OZRxGmyXcUwglANg7DYpZPBcsYsoYyfsItQiYnlmsLIxsyoptll/HEysnlDJJtIJE+6iBgacVtfKy/ZACrUYGyWyNQLp09AEAVU2Wlbv0L1yA0TC7grNwWk1KcLj4ViahVS0=')">COPY KEY</button>
+    </div>
+
+    <div class="box">
+        <h2>Dtac Game (NetMod) </h2>
+        <button class="btn" onclick="copyText('nm-ssh://SWHR3N4eHeIjWorYTBnqC0X+NsQk9fUDzDpv73dDPo+ccjUqOug7aXO8biaz/jR7X7WM4TzY65oYMCt9Lem+TDtME6YDYskRWAdktCWvzWARRtRUxazbQ+Rd0/4yjMVmNJNWe1aPBzBQLSPU72qK0Nlk/KbhC0Lndlc24THSQ/C0dFJKaXMElGHrRNlQwzlnjE9aIRp9DlvPxqxX8M3kA8KS1bF9BzQmShVJ/Ssy+V9TmUcn8X9UJxslf3nYXT01hpB2bOgA+s9QFeRifb7l96HX+jCNloFQw7JdTzmXu/vEpirycZYpdGHCU6YR23QqQXeo6tswzVbgQc/DUSALR41uiOJMPtAHvrkugvuqxoEyHmn+qeCXl/FlEzT2rpGUmUvCG1xzcD/GiCp/KH6ha/9VBn4lqkNuZIsWQfbCQejcVusfD/LcsvLIiukg47kEU9hTIe1K6p+3h1/JF3VffsqEh4620IjWUIdQ4feOTQeS2LqBVuAkpxF2SEEQzvQZEBqJLwF3Dz0pj3eHERE2n+/Y3CGNpXN99I/CPRgiF9AfGWvpFOlLitPc6l6edV51RKyHqCzkne7VXV381UOzd3Bb1tXtxB6enAPxIE4onuqw6TU1qe6wwBS0VMp1G96zkYHl/GIXERVpEDAJ79ViDC0gjUuWlar6IcWFdGaFZAya2+9NNplZycjuzDRli+FO/lzjwqIaDA05nCdQjaFMtVrTurdjK1ceGhWzkzUklhdYMKrg0mzyXk3akMDM+kLDNRBpd0H2BCbaEQvM5Gossx/jyBn9nuMPbZlBD1mfUPIly+5SFj00XNYsqsdYeXyFFPp/6JkBqvcaIyZZKfcQxNWom4VOwA7oYbrKgSjL394eLTvF+HCWN78eBp9UWm9wtxXRgG3tFMqBHebYJwnlFA==')">COPY KEY</button>
     </div>
     
-    <!-- ðŸ”¹ VLESS CONFIG 5 -->
-    <div class="box">
-        <h2>Atom 500Mb (NetMod) </h2>
-        <button class="btn" onclick="copyText('nm-ssh://hhYI6yewSYHJIopLQv+T/UX+NsQk9fUDzDpv73dDPo+ccjUqOug7aXO8biaz/jR7X7WM4TzY65oYMCt9Lem+TDtME6YDYskRWAdktCWvzWARRtRUxazbQ+Rd0/4yjMVm39UU8q+7tJItR64ORG7giJbg32fQ66/5uLx242o28860dFJKaXMElGHrRNlQwzlnjE9aIRp9DlvPxqxX8M3kA8KS1bF9BzQmShVJ/Ssy+V9TmUcn8X9UJxslf3nYXT01hpB2bOgA+s9QFeRifb7l96HX+jCNloFQw7JdTzmXu/vEpirycZYpdGHCU6YR23QqQXeo6tswzVbgQc/DUSALR41uiOJMPtAHvrkugvuqxoEyHmn+qeCXl/FlEzT2rpGUHOH1OULqPDL8Cq5Y4EWcTYqW3Pymevv8pJWfCi/EyINFlSkiq4CAy+RF5to/7puKTmxyC/flLPwm5OrLVg8Eig18Aq/QT2rZeeDZjZsbivZ/xnCv97w6B2Um2Opm95c9QgQh010zH6cLgmeEau/Ha2RZux0EKtIEHDTwyK+Dj+9AnmOPetkFQLPPg8hufztLv371tOYKYwyS7cTwzWD5N+kJex+2XtQAC9Yo0Sw+OkZh1//bfl94b7Iw05kXhpcxbBzIUQTfbWaz3tHe3787X22Barba6FZTYjyEFK6Jor0vw49rVqPr6PgaDC3YOXHS6VDARboX7yvlRUdjwm7hc36yoTXHKIAeD+zYiSa+T/I6ybW1VFMuvEhCsRWn7CVzQzIFM4t8bBz32lisoNja6w==')">
-            COPY SSH KeY
-        </button>
-    </div>
-
-    <!-- ðŸ”¹ VLESS CONFIG 6 -->
-    <div class="box">
-        <h2>Myanmar For Outline  </h2>
-        <button class="btn" onclick="copyText('ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHaHc1OWNTQWVlZUpudmxkbmpPMnBx@157.230.251.34:36731#Myanmar%20Outline')">
-            COPY Outline KeY
-        </button>
-    </div>
-    
-    <div class="box">
-        <h2>Dtac Game(NetMoD) </h2>
-        <button class="btn" onclick="copyText('nm-ssh://SWHR3N4eHeIjWorYTBnqC0X+NsQk9fUDzDpv73dDPo+ccjUqOug7aXO8biaz/jR7X7WM4TzY65oYMCt9Lem+TDtME6YDYskRWAdktCWvzWARRtRUxazbQ+Rd0/4yjMVmNJNWe1aPBzBQLSPU72qK0Nlk/KbhC0Lndlc24THSQ/C0dFJKaXMElGHrRNlQwzlnjE9aIRp9DlvPxqxX8M3kA8KS1bF9BzQmShVJ/Ssy+V9TmUcn8X9UJxslf3nYXT01hpB2bOgA+s9QFeRifb7l96HX+jCNloFQw7JdTzmXu/vEpirycZYpdGHCU6YR23QqQXeo6tswzVbgQc/DUSALR41uiOJMPtAHvrkugvuqxoEyHmn+qeCXl/FlEzT2rpGUmUvCG1xzcD/GiCp/KH6ha/9VBn4lqkNuZIsWQfbCQejcVusfD/LcsvLIiukg47kEU9hTIe1K6p+3h1/JF3VffsqEh4620IjWUIdQ4feOTQeS2LqBVuAkpxF2SEEQzvQZEBqJLwF3Dz0pj3eHERE2n+/Y3CGNpXN99I/CPRgiF9AfGWvpFOlLitPc6l6edV51RKyHqCzkne7VXV381UOzd3Bb1tXtxB6enAPxIE4onuqw6TU1qe6wwBS0VMp1G96zkYHl/GIXERVpEDAJ79ViDC0gjUuWlar6IcWFdGaFZAya2+9NNplZycjuzDRli+FO/lzjwqIaDA05nCdQjaFMtVrTurdjK1ceGhWzkzUklhdYMKrg0mzyXk3akMDM+kLDNRBpd0H2BCbaEQvM5Gossx/jyBn9nuMPbZlBD1mfUPIly+5SFj00XNYsqsdYeXyFFPp/6JkBqvcaIyZZKfcQxNWom4VOwA7oYbrKgSjL394eLTvF+HCWN78eBp9UWm9wtxXRgG3tFMqBHebYJwnlFA==')">
-            COPY SSH KeY
-        </button>
+        <div class="box">
+        <h2>Atom 500Mb (NetMod)</h2>
+        <button class="btn" onclick="copyText('nm-ssh://hhYI6yewSYHJIopLQv+T/UX+NsQk9fUDzDpv73dDPo+ccjUqOug7aXO8biaz/jR7X7WM4TzY65oYMCt9Lem+TDtME6YDYskRWAdktCWvzWARRtRUxazbQ+Rd0/4yjMVm39UU8q+7tJItR64ORG7giJbg32fQ66/5uLx242o28860dFJKaXMElGHrRNlQwzlnjE9aIRp9DlvPxqxX8M3kA8KS1bF9BzQmShVJ/Ssy+V9TmUcn8X9UJxslf3nYXT01hpB2bOgA+s9QFeRifb7l96HX+jCNloFQw7JdTzmXu/vEpirycZYpdGHCU6YR23QqQXeo6tswzVbgQc/DUSALR41uiOJMPtAHvrkugvuqxoEyHmn+qeCXl/FlEzT2rpGUHOH1OULqPDL8Cq5Y4EWcTYqW3Pymevv8pJWfCi/EyINFlSkiq4CAy+RF5to/7puKTmxyC/flLPwm5OrLVg8Eig18Aq/QT2rZeeDZjZsbivZ/xnCv97w6B2Um2Opm95c9QgQh010zH6cLgmeEau/Ha2RZux0EKtIEHDTwyK+Dj+9AnmOPetkFQLPPg8hufztLv371tOYKYwyS7cTwzWD5N+kJex+2XtQAC9Yo0Sw+OkZh1//bfl94b7Iw05kXhpcxbBzIUQTfbWaz3tHe3787X22Barba6FZTYjyEFK6Jor0vw49rVqPr6PgaDC3YOXHS6VDARboX7yvlRUdjwm7hc36yoTXHKIAeD+zYiSa+T/I6ybW1VFMuvEhCsRWn7CVzQzIFM4t8bBz32lisoNja6w==')">COPY KEY</button>
     </div>
 
     <div class="box">
-        <h2>Dtac Jaidee(ZiVPN) </h2>
-        <button class="btn" onclick="copyText('zivpn://r0no+QJeY9jHAV6lt/shRATSSsWsWqA3Ia9iJ93kTiMG3C/d0lNlna13wuC8+NvvArrWtRP8GXPQghivgKcONHwjMPuGN75aiACIdoC7Rxc2D1oFFFceGNaG6qq/pF56fCEoOy09+Z1oYstXzgb7OaCR1SuprbpTyi13FYET0c/cRqUGHftwf42U0vor7Svqv1s8MEZp4Hgq9eGfZpY6QV721EAE73hfXKb/pFO1GAt4zGDdBqJG4TtqeSGuveA5d9fmxFCXCm2BX+W5MzQYXFOUfnW5wOpvc1wQF0bCWWKAquoE9EMbYPeuoHwwrKQ2nfeV1iXaHXrVbTUsiHmipdDi5YxrUVeggIs4yNQwj9koW0ke+4tj/+myMO4wDOMRQ2j/e/cexY9EAVQ81kZvyAOfXnNrNru+G7wHtG+pJFev7Nrm8RQjc2m1MZw8s6GRCQOnH4fANOo/crrtjpy++EC1V/Lu98J8UlvrHCsRkz7qPNrpx6dWMEiR2hei7wSOTgpRqwiZSH0bA3N0nYag+orsuf8rPBXRhyCwQzK8Bu4TXjhnFvJ5J+vtRGSk2OzHEJkTvGutS41+/289GApGevleXiUpq+rwNXRe4GRh6gkICm/7wyLq++yS1hO5oYk3A3+HQV7KzVNvCVE9KQK5FmKyqh+JzKaX2+alsghglVcNABVAFyj3CmoYPoTPI23Uxri90HH6Ax1ty7L1yvIvnD/dYr48+tWSLEQk3FcQ3f1Z8KlnM/QWr/HJy31cTNRjMNYRY9F8N/u/ZIlDTJTu/l2f7k1GMRPxVL/IjrOxhp5Jz+dH75ls2fteACauCCqc0uJhSKxnTwRWkJDStLtYkrFhWcD70wL7n3BNExPZzqlKN97hsOPjrKdPTwUza+8KI63B9WOMxF0D3fSvLXvI961gqT8SJBF9UWCpwQne7tSPCmuD+M1SO9nUpVgXLYKlwbX61/l0NLVVNueyOpk8YL/YZBRgn9gzxW2jaX0OZRxGmyXcUwglANg7DYpZPBcsYsoYyfsItQiYnlmsLIxsyoptll/HEysnlDJJtIJE+6iBgacVtfKy/ZACrUYGyWyNQLp09AEAVU2Wlbv0L1yA0TC7grNwWk1KcLj4ViahVS0=')">
-            COPY UDP KeY
-        </button>
+        <h2>Myanmar For Outline</h2>
+        <button class="btn" onclick="copyText('ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHaHc1OWNTQWVlZUpudmxkbmpPMnBx@157.230.251.34:36731#Myanmar%20Outline')">COPY KEY</button>
     </div>
     
     <div class="music">
         YT Background Music
         <audio controls autoplay loop>
-            <source src="https://codeberg.org/yawyaw/mp3/raw/branch/main/Mlai-Nnga-Hkra.mp3" type="audio/mpeg">
+            <source src="https://codeberg.org/yawyaw/mp3/raw/branch/main/Mlai-Nnga-Hkra.mp3">
         </audio>
     </div>
 
 </div>
 
 <script>
-function copyText(text) {
+function copyText(text){
     navigator.clipboard.writeText(text);
-    alert("Copied!");
+    alert("Copied to clipboard");
 }
-
-function toggleMode() {
+function toggleMode(){
     document.body.classList.toggle("light");
 }
 </script>

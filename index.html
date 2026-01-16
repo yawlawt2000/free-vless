@@ -50,11 +50,24 @@ body{
         inset 0 0 0 1px rgba(255,255,255,.15);
 }
 
+/* TOP BAR */
 .top{
     display:flex;
     justify-content:space-between;
     align-items:center;
     margin-bottom:12px;
+}
+
+.social a{
+    text-decoration:none;
+    margin-right:8px;
+    padding:6px 10px;
+    border-radius:14px;
+    font-size:13px;
+    font-weight:600;
+    color:#000;
+    background:linear-gradient(135deg,var(--primary),var(--secondary));
+    box-shadow:0 0 10px var(--primary);
 }
 
 .toggle button{
@@ -101,7 +114,6 @@ h1{
     text-align:center;
     margin:6px 0 2px;
     font-size:22px;
-    letter-spacing:.5px;
 }
 
 .status{
@@ -145,10 +157,6 @@ body.light .box{
     box-shadow:0 0 20px rgba(0,229,255,.6);
 }
 
-.btn:active{
-    transform:scale(.97);
-}
-
 .music{
     margin-top:18px;
     background:rgba(0,0,0,.3);
@@ -173,7 +181,10 @@ audio{
 <div class="container">
 
     <div class="top">
-        <div></div>
+        <div class="social">
+            <a href="https://www.facebook.com/yawlawt2431" target="_blank">Facebook</a>
+            <a href="https://t.me/ytvpnnetmod" target="_blank">Telegram</a>
+        </div>
         <div class="toggle">
             <button onclick="toggleMode()">🌙 / ☀️</button>
         </div>
@@ -188,6 +199,7 @@ audio{
 
     <div class="divider"></div>
 
+    <!-- BOX SAMPLE -->
     <div class="box">
         <h2>Ais 64Kbps (V2ray)</h2>
         <button class="btn" onclick="copyText('vless://0befad3d-deb0-4df0-894e-8e69f8a72243@yt.lawtaung.de5.net:80?path=%2Fyt&security=&encryption=none&host=www.speedtest.net&type=ws#Ais%2064Kbps')">COPY KEY</button>
@@ -227,7 +239,7 @@ audio{
         <h2>Myanmar For Outline</h2>
         <button class="btn" onclick="copyText('ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHaHc1OWNTQWVlZUpudmxkbmpPMnBx@157.230.251.34:36731#Myanmar%20Outline')">COPY KEY</button>
     </div>
-    
+
     <div class="music">
         YT Background Music
         <audio controls autoplay loop>
